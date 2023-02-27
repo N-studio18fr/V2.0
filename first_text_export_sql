@@ -1,452 +1,451 @@
--- Base de données :  `epiz_33519026_fluxbb`
+Structure de la table bans
 --
 
--- --------------------------------------------------------
-
---
--- Structure de la table `bans`
---
-
-CREATE TABLE `bans` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `username` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expire` int(10) UNSIGNED DEFAULT NULL,
-  `ban_creator` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE bans (
+  id int(10) UNSIGNED NOT NULL,
+  username varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  ip varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  email varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  message varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  expire int(10) UNSIGNED DEFAULT NULL,
+  ban_creator int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
+-- Structure de la table categories
 --
 
-CREATE TABLE `categories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `cat_name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'New Category',
-  `disp_position` int(10) NOT NULL DEFAULT 0
+CREATE TABLE categories (
+  id int(10) UNSIGNED NOT NULL,
+  cat_name varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'New Category',
+  disp_position int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `censoring`
+-- Structure de la table censoring
 --
 
-CREATE TABLE `censoring` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `search_for` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `replace_with` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+CREATE TABLE censoring (
+  id int(10) UNSIGNED NOT NULL,
+  search_for varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  replace_with varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `config`
+-- Structure de la table config
 --
 
-CREATE TABLE `config` (
-  `conf_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `conf_value` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+CREATE TABLE config (
+  conf_name varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  conf_value text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `forums`
+-- Structure de la table forums
 --
 
-CREATE TABLE `forums` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `forum_name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'New forum',
-  `forum_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect_url` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `moderators` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `num_topics` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `num_posts` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `last_post` int(10) UNSIGNED DEFAULT NULL,
-  `last_post_id` int(10) UNSIGNED DEFAULT NULL,
-  `last_poster` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_topic` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sort_by` tinyint(1) NOT NULL DEFAULT 0,
-  `disp_position` int(10) NOT NULL DEFAULT 0,
-  `cat_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `no_sum_mess` tinyint(1) NOT NULL DEFAULT 0,
-  `parent_forum_id` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE forums (
+  id int(10) UNSIGNED NOT NULL,
+  forum_name varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'New forum',
+  forum_desc text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  redirect_url varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  moderators text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  num_topics mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+  num_posts mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+  last_post int(10) UNSIGNED DEFAULT NULL,
+  last_post_id int(10) UNSIGNED DEFAULT NULL,
+  last_poster varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  last_topic varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  sort_by tinyint(1) NOT NULL DEFAULT 0,
+  disp_position int(10) NOT NULL DEFAULT 0,
+  cat_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  no_sum_mess tinyint(1) NOT NULL DEFAULT 0,
+  parent_forum_id int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `forum_perms`
+-- Structure de la table forum_perms
 --
 
-CREATE TABLE `forum_perms` (
-  `group_id` int(10) NOT NULL DEFAULT 0,
-  `forum_id` int(10) NOT NULL DEFAULT 0,
-  `read_forum` tinyint(1) NOT NULL DEFAULT 1,
-  `post_replies` tinyint(1) NOT NULL DEFAULT 1,
-  `post_topics` tinyint(1) NOT NULL DEFAULT 1
+CREATE TABLE forum_perms (
+  group_id int(10) NOT NULL DEFAULT 0,
+  forum_id int(10) NOT NULL DEFAULT 0,
+  read_forum tinyint(1) NOT NULL DEFAULT 1,
+  post_replies tinyint(1) NOT NULL DEFAULT 1,
+  post_topics tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `forum_subscriptions`
+-- Structure de la table forum_subscriptions
 --
 
-CREATE TABLE `forum_subscriptions` (
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `forum_id` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE forum_subscriptions (
+  user_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  forum_id int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `groups`
+-- Structure de la table groups
 --
 
-CREATE TABLE `groups` (
-  `g_id` int(10) UNSIGNED NOT NULL,
-  `g_title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `g_user_title` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `g_promote_min_posts` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `g_promote_next_group` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `g_moderator` tinyint(1) NOT NULL DEFAULT 0,
-  `g_mod_edit_users` tinyint(1) NOT NULL DEFAULT 0,
-  `g_mod_rename_users` tinyint(1) NOT NULL DEFAULT 0,
-  `g_mod_change_passwords` tinyint(1) NOT NULL DEFAULT 0,
-  `g_mod_ban_users` tinyint(1) NOT NULL DEFAULT 0,
-  `g_mod_promote_users` tinyint(1) NOT NULL DEFAULT 0,
-  `g_read_board` tinyint(1) NOT NULL DEFAULT 1,
-  `g_view_users` tinyint(1) NOT NULL DEFAULT 1,
-  `g_post_replies` tinyint(1) NOT NULL DEFAULT 1,
-  `g_post_topics` tinyint(1) NOT NULL DEFAULT 1,
-  `g_edit_posts` tinyint(1) NOT NULL DEFAULT 1,
-  `g_delete_posts` tinyint(1) NOT NULL DEFAULT 1,
-  `g_delete_topics` tinyint(1) NOT NULL DEFAULT 1,
-  `g_post_links` tinyint(1) NOT NULL DEFAULT 1,
-  `g_set_title` tinyint(1) NOT NULL DEFAULT 1,
-  `g_search` tinyint(1) NOT NULL DEFAULT 1,
-  `g_search_users` tinyint(1) NOT NULL DEFAULT 1,
-  `g_send_email` tinyint(1) NOT NULL DEFAULT 1,
-  `g_post_flood` smallint(6) NOT NULL DEFAULT 30,
-  `g_search_flood` smallint(6) NOT NULL DEFAULT 30,
-  `g_email_flood` smallint(6) NOT NULL DEFAULT 60,
-  `g_report_flood` smallint(6) NOT NULL DEFAULT 60,
-  `g_deledit_interval` int(10) NOT NULL DEFAULT 0,
-  `g_pm` tinyint(1) NOT NULL DEFAULT 1,
-  `g_pm_limit` int(10) UNSIGNED NOT NULL DEFAULT 100
+CREATE TABLE groups (
+  g_id int(10) UNSIGNED NOT NULL,
+  g_title varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  g_user_title varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  g_promote_min_posts int(10) UNSIGNED NOT NULL DEFAULT 0,
+  g_promote_next_group int(10) UNSIGNED NOT NULL DEFAULT 0,
+  g_moderator tinyint(1) NOT NULL DEFAULT 0,
+  g_mod_edit_users tinyint(1) NOT NULL DEFAULT 0,
+  g_mod_rename_users tinyint(1) NOT NULL DEFAULT 0,
+  g_mod_change_passwords tinyint(1) NOT NULL DEFAULT 0,
+  g_mod_ban_users tinyint(1) NOT NULL DEFAULT 0,
+  g_mod_promote_users tinyint(1) NOT NULL DEFAULT 0,
+  g_read_board tinyint(1) NOT NULL DEFAULT 1,
+  g_view_users tinyint(1) NOT NULL DEFAULT 1,
+  g_post_replies tinyint(1) NOT NULL DEFAULT 1,
+  g_post_topics tinyint(1) NOT NULL DEFAULT 1,
+  g_edit_posts tinyint(1) NOT NULL DEFAULT 1,
+  g_delete_posts tinyint(1) NOT NULL DEFAULT 1,
+  g_delete_topics tinyint(1) NOT NULL DEFAULT 1,
+  g_post_links tinyint(1) NOT NULL DEFAULT 1,
+  g_set_title tinyint(1) NOT NULL DEFAULT 1,
+  g_search tinyint(1) NOT NULL DEFAULT 1,
+  g_search_users tinyint(1) NOT NULL DEFAULT 1,
+  g_send_email tinyint(1) NOT NULL DEFAULT 1,
+  g_post_flood smallint(6) NOT NULL DEFAULT 30,
+  g_search_flood smallint(6) NOT NULL DEFAULT 30,
+  g_email_flood smallint(6) NOT NULL DEFAULT 60,
+  g_report_flood smallint(6) NOT NULL DEFAULT 60,
+  g_deledit_interval int(10) NOT NULL DEFAULT 0,
+  g_pm tinyint(1) NOT NULL DEFAULT 1,
+  g_pm_limit int(10) UNSIGNED NOT NULL DEFAULT 100,
+  g_up_ext varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'webp,jpg,jpeg,png,gif,mp3,zip,rar,7z',
+  g_up_max int(10) NOT NULL DEFAULT 0,
+  g_up_limit int(10) NOT NULL DEFAULT 0,
+  g_up_perm_del tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `online`
+-- Structure de la table online
 --
 
 CREATE TABLE `online` (
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
-  `ident` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `logged` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `idle` tinyint(1) NOT NULL DEFAULT 0,
-  `last_post` int(10) UNSIGNED DEFAULT NULL,
-  `last_search` int(10) UNSIGNED DEFAULT NULL,
-  `witt_data` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+  user_id int(10) UNSIGNED NOT NULL DEFAULT 1,
+  ident varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  logged int(10) UNSIGNED NOT NULL DEFAULT 0,
+  idle tinyint(1) NOT NULL DEFAULT 0,
+  last_post int(10) UNSIGNED DEFAULT NULL,
+  last_search int(10) UNSIGNED DEFAULT NULL,
+  witt_data varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pms_new_block`
+-- Structure de la table pms_new_block
 --
 
-CREATE TABLE `pms_new_block` (
-  `bl_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `bl_user_id` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE pms_new_block (
+  bl_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  bl_user_id int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pms_new_posts`
+-- Structure de la table pms_new_posts
 --
 
-CREATE TABLE `pms_new_posts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `poster` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `poster_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
-  `poster_ip` varchar(39) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hide_smilies` tinyint(1) NOT NULL DEFAULT 0,
-  `posted` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `edited` int(10) UNSIGNED DEFAULT NULL,
-  `edited_by` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `post_new` tinyint(1) NOT NULL DEFAULT 1,
-  `topic_id` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE pms_new_posts (
+  id int(10) UNSIGNED NOT NULL,
+  poster varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  poster_id int(10) UNSIGNED NOT NULL DEFAULT 1,
+  poster_ip varchar(39) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  message text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  hide_smilies tinyint(1) NOT NULL DEFAULT 0,
+  posted int(10) UNSIGNED NOT NULL DEFAULT 0,
+  edited int(10) UNSIGNED DEFAULT NULL,
+  edited_by varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  post_new tinyint(1) NOT NULL DEFAULT 1,
+  topic_id int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pms_new_topics`
+-- Structure de la table pms_new_topics
 --
 
-CREATE TABLE `pms_new_topics` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `topic` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `starter` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `starter_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `to_user` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `to_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `replies` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `last_posted` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `last_poster` tinyint(1) NOT NULL DEFAULT 0,
-  `see_st` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `see_to` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `topic_st` tinyint(4) NOT NULL DEFAULT 0,
-  `topic_to` tinyint(4) NOT NULL DEFAULT 0
+CREATE TABLE pms_new_topics (
+  id int(10) UNSIGNED NOT NULL,
+  topic varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  starter varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  starter_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  to_user varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  to_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  replies mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+  last_posted int(10) UNSIGNED NOT NULL DEFAULT 0,
+  last_poster tinyint(1) NOT NULL DEFAULT 0,
+  see_st int(10) UNSIGNED NOT NULL DEFAULT 0,
+  see_to int(10) UNSIGNED NOT NULL DEFAULT 0,
+  topic_st tinyint(4) NOT NULL DEFAULT 0,
+  topic_to tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `poll`
+-- Structure de la table poll
 --
 
-CREATE TABLE `poll` (
-  `tid` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `question` tinyint(4) NOT NULL DEFAULT 0,
-  `field` tinyint(4) NOT NULL DEFAULT 0,
-  `choice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `votes` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE poll (
+  tid int(10) UNSIGNED NOT NULL DEFAULT 0,
+  question tinyint(4) NOT NULL DEFAULT 0,
+  field tinyint(4) NOT NULL DEFAULT 0,
+  choice varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  votes int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `poll_voted`
+-- Structure de la table poll_voted
 --
 
-CREATE TABLE `poll_voted` (
-  `tid` int(10) UNSIGNED NOT NULL,
-  `uid` int(10) UNSIGNED NOT NULL,
-  `rez` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+CREATE TABLE poll_voted (
+  tid int(10) UNSIGNED NOT NULL,
+  uid int(10) UNSIGNED NOT NULL,
+  rez text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `posts`
+-- Structure de la table posts
 --
 
-CREATE TABLE `posts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `poster` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `poster_id` int(10) UNSIGNED NOT NULL DEFAULT 1,
-  `poster_ip` varchar(39) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `poster_email` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hide_smilies` tinyint(1) NOT NULL DEFAULT 0,
-  `edit_post` tinyint(1) NOT NULL DEFAULT 0,
-  `posted` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `edited` int(10) UNSIGNED DEFAULT NULL,
-  `edited_by` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `topic_id` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE posts (
+  id int(10) UNSIGNED NOT NULL,
+  poster varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  poster_id int(10) UNSIGNED NOT NULL DEFAULT 1,
+  poster_ip varchar(39) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  poster_email varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  message mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  hide_smilies tinyint(1) NOT NULL DEFAULT 0,
+  edit_post tinyint(1) NOT NULL DEFAULT 0,
+  posted int(10) UNSIGNED NOT NULL DEFAULT 0,
+  edited int(10) UNSIGNED DEFAULT NULL,
+  edited_by varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  user_agent varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  topic_id int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `reports`
+-- Structure de la table reports
 --
 
-CREATE TABLE `reports` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `post_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `topic_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `forum_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `reported_by` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `created` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `zapped` int(10) UNSIGNED DEFAULT NULL,
-  `zapped_by` int(10) UNSIGNED DEFAULT NULL
+CREATE TABLE reports (
+  id int(10) UNSIGNED NOT NULL,
+  post_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  topic_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  forum_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  reported_by int(10) UNSIGNED NOT NULL DEFAULT 0,
+  created int(10) UNSIGNED NOT NULL DEFAULT 0,
+  message text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  zapped int(10) UNSIGNED DEFAULT NULL,
+  zapped_by int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `search_cache`
+-- Structure de la table search_cache
 --
 
-CREATE TABLE `search_cache` (
-  `id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `ident` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `search_data` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+CREATE TABLE search_cache (
+  id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  ident varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  search_data mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `search_matches`
+-- Structure de la table search_matches
 --
 
-CREATE TABLE `search_matches` (
-  `post_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `word_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `subject_match` tinyint(1) NOT NULL DEFAULT 0
+CREATE TABLE search_matches (
+  post_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  word_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  subject_match tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `search_words`
+-- Structure de la table search_words
 --
 
-CREATE TABLE `search_words` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `word` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT ''
+CREATE TABLE search_words (
+  id int(10) UNSIGNED NOT NULL,
+  word varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sec_of_login`
+-- Structure de la table sec_of_login
 --
 
-CREATE TABLE `sec_of_login` (
-  `form_key` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `form_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `form_ip` varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `form_captcha` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL
+CREATE TABLE sec_of_login (
+  form_key varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  form_time int(10) UNSIGNED NOT NULL DEFAULT 0,
+  form_ip varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL,
+  form_captcha varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sec_of_register`
+-- Structure de la table sec_of_register
 --
 
-CREATE TABLE `sec_of_register` (
-  `form_key` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `form_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `form_ip` varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `form_captcha` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+CREATE TABLE sec_of_register (
+  form_key varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  form_time int(10) UNSIGNED NOT NULL DEFAULT 0,
+  form_ip varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL,
+  form_captcha varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `smilies`
+-- Structure de la table smilies
 --
 
-CREATE TABLE `smilies` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `image` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `text` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `disp_position` tinyint(4) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE smilies (
+  id int(10) UNSIGNED NOT NULL,
+  image varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  text varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  disp_position tinyint(4) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `topics`
+-- Structure de la table topics
 --
 
-CREATE TABLE `topics` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `poster` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `posted` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `first_post_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `last_post` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `last_post_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `last_poster` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `num_views` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `num_replies` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `closed` tinyint(1) NOT NULL DEFAULT 0,
-  `sticky` tinyint(1) NOT NULL DEFAULT 0,
-  `stick_fp` tinyint(1) NOT NULL DEFAULT 0,
-  `moved_to` int(10) UNSIGNED DEFAULT NULL,
-  `forum_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `poll_type` tinyint(4) NOT NULL DEFAULT 0,
-  `poll_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `poll_term` tinyint(4) NOT NULL DEFAULT 0,
-  `poll_kol` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE topics (
+  id int(10) UNSIGNED NOT NULL,
+  poster varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  subject varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  posted int(10) UNSIGNED NOT NULL DEFAULT 0,
+  first_post_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  last_post int(10) UNSIGNED NOT NULL DEFAULT 0,
+  last_post_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  last_poster varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  num_views mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+  num_replies mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+  closed tinyint(1) NOT NULL DEFAULT 0,
+  sticky tinyint(1) NOT NULL DEFAULT 0,
+  stick_fp tinyint(1) NOT NULL DEFAULT 0,
+  moved_to int(10) UNSIGNED DEFAULT NULL,
+  forum_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  poll_type tinyint(4) NOT NULL DEFAULT 0,
+  poll_time int(10) UNSIGNED NOT NULL DEFAULT 0,
+  poll_term tinyint(4) NOT NULL DEFAULT 0,
+  poll_kol int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `topic_subscriptions`
+-- Structure de la table topic_subscriptions
 --
 
-CREATE TABLE `topic_subscriptions` (
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `topic_id` int(10) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE topic_subscriptions (
+  user_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  topic_id int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table users
 --
 
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `group_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `username` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `realname` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jabber` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `icq` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `msn` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `aim` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `yahoo` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `location` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `signature` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `disp_topics` tinyint(3) UNSIGNED DEFAULT NULL,
-  `disp_posts` tinyint(3) UNSIGNED DEFAULT NULL,
-  `email_setting` tinyint(1) NOT NULL DEFAULT 1,
-  `notify_with_post` tinyint(1) NOT NULL DEFAULT 0,
-  `auto_notify` tinyint(1) NOT NULL DEFAULT 0,
-  `show_smilies` tinyint(1) NOT NULL DEFAULT 1,
-  `show_img` tinyint(1) NOT NULL DEFAULT 1,
-  `show_img_sig` tinyint(1) NOT NULL DEFAULT 1,
-  `show_avatars` tinyint(1) NOT NULL DEFAULT 1,
-  `show_sig` tinyint(1) NOT NULL DEFAULT 1,
-  `timezone` float NOT NULL DEFAULT 0,
-  `dst` tinyint(1) NOT NULL DEFAULT 0,
-  `time_format` tinyint(1) NOT NULL DEFAULT 0,
-  `date_format` tinyint(1) NOT NULL DEFAULT 0,
-  `language` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'English',
-  `style` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Air',
-  `num_posts` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `last_post` int(10) UNSIGNED DEFAULT NULL,
-  `last_search` int(10) UNSIGNED DEFAULT NULL,
-  `last_email_sent` int(10) UNSIGNED DEFAULT NULL,
-  `last_report_sent` int(10) UNSIGNED DEFAULT NULL,
-  `registered` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `registration_ip` varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
-  `last_visit` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `admin_note` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `activate_string` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `activate_key` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `messages_enable` tinyint(1) NOT NULL DEFAULT 1,
-  `messages_email` tinyint(1) NOT NULL DEFAULT 0,
-  `messages_flag` tinyint(1) NOT NULL DEFAULT 0,
-  `messages_new` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `messages_all` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `pmsn_last_post` int(10) UNSIGNED DEFAULT NULL,
-  `warning_flag` tinyint(1) NOT NULL DEFAULT 0,
-  `warning_all` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `gender` tinyint(4) UNSIGNED NOT NULL DEFAULT 0
+CREATE TABLE users (
+  id int(10) UNSIGNED NOT NULL,
+  group_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  username varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  password varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  email varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  title varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  realname varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  url varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  jabber varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  icq varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  msn varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  aim varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  yahoo varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  location varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  signature text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  disp_topics tinyint(3) UNSIGNED DEFAULT NULL,
+  disp_posts tinyint(3) UNSIGNED DEFAULT NULL,
+  email_setting tinyint(1) NOT NULL DEFAULT 1,
+  notify_with_post tinyint(1) NOT NULL DEFAULT 0,
+  auto_notify tinyint(1) NOT NULL DEFAULT 0,
+  show_smilies tinyint(1) NOT NULL DEFAULT 1,
+  show_img tinyint(1) NOT NULL DEFAULT 1,
+  show_img_sig tinyint(1) NOT NULL DEFAULT 1,
+  show_avatars tinyint(1) NOT NULL DEFAULT 1,
+  show_sig tinyint(1) NOT NULL DEFAULT 1,
+  timezone float NOT NULL DEFAULT 0,
+  dst tinyint(1) NOT NULL DEFAULT 0,
+  time_format tinyint(1) NOT NULL DEFAULT 0,
+  date_format tinyint(1) NOT NULL DEFAULT 0,
+  language varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'French',
+  style varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Air',
+  num_posts int(10) UNSIGNED NOT NULL DEFAULT 0,
+  last_post int(10) UNSIGNED DEFAULT NULL,
+  last_search int(10) UNSIGNED DEFAULT NULL,
+  last_email_sent int(10) UNSIGNED DEFAULT NULL,
+  last_report_sent int(10) UNSIGNED DEFAULT NULL,
+  registered int(10) UNSIGNED NOT NULL DEFAULT 0,
+  registration_ip varchar(39) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0.0.0.0',
+  last_visit int(10) UNSIGNED NOT NULL DEFAULT 0,
+  admin_note varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  activate_string varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  activate_key varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  messages_enable tinyint(1) NOT NULL DEFAULT 1,
+  messages_email tinyint(1) NOT NULL DEFAULT 0,
+  messages_flag tinyint(1) NOT NULL DEFAULT 0,
+  messages_new int(10) UNSIGNED NOT NULL DEFAULT 0,
+  messages_all int(10) UNSIGNED NOT NULL DEFAULT 0,
+  pmsn_last_post int(10) UNSIGNED DEFAULT NULL,
+  warning_flag tinyint(1) NOT NULL DEFAULT 0,
+  warning_all int(10) UNSIGNED NOT NULL DEFAULT 0,
+  gender tinyint(4) UNSIGNED NOT NULL DEFAULT 0,
+  upload_size int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -456,11 +455,11 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `warnings` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `poster` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `poster_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `posted` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  id int(10) UNSIGNED NOT NULL,
+  poster varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  poster_id int(10) UNSIGNED NOT NULL DEFAULT 0,
+  posted int(10) UNSIGNED NOT NULL DEFAULT 0,
+  message text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -468,268 +467,267 @@ CREATE TABLE `warnings` (
 --
 
 --
--- Index pour la table `bans`
+-- Index pour la table bans
 --
-ALTER TABLE `bans`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `bans_username_idx` (`username`(25));
+ALTER TABLE bans
+  ADD PRIMARY KEY (id),
+  ADD KEY bans_username_idx (username(25));
 
 --
--- Index pour la table `categories`
+-- Index pour la table categories
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE categories
+  ADD PRIMARY KEY (id);
 
 --
--- Index pour la table `censoring`
+-- Index pour la table censoring
 --
-ALTER TABLE `censoring`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE censoring
+  ADD PRIMARY KEY (id);
 
 --
--- Index pour la table `config`
+-- Index pour la table config
 --
-ALTER TABLE `config`
-  ADD PRIMARY KEY (`conf_name`);
+ALTER TABLE config
+  ADD PRIMARY KEY (conf_name);
 
 --
--- Index pour la table `forums`
+-- Index pour la table forums
 --
-ALTER TABLE `forums`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE forums
+  ADD PRIMARY KEY (id);
 
 --
--- Index pour la table `forum_perms`
+-- Index pour la table forum_perms
 --
-ALTER TABLE `forum_perms`
-  ADD PRIMARY KEY (`group_id`,`forum_id`);
+ALTER TABLE forum_perms
+  ADD PRIMARY KEY (group_id,forum_id);
 
 --
--- Index pour la table `forum_subscriptions`
+-- Index pour la table forum_subscriptions
 --
-ALTER TABLE `forum_subscriptions`
-  ADD PRIMARY KEY (`user_id`,`forum_id`);
+ALTER TABLE forum_subscriptions
+  ADD PRIMARY KEY (user_id,forum_id);
 
 --
--- Index pour la table `groups`
+-- Index pour la table groups
 --
-ALTER TABLE `groups`
-  ADD PRIMARY KEY (`g_id`);
+ALTER TABLE groups
+  ADD PRIMARY KEY (g_id);
 
 --
--- Index pour la table `online`
+-- Index pour la table online
 --
-ALTER TABLE `online`
-  ADD UNIQUE KEY `online_user_id_ident_idx` (`user_id`,`ident`(25)),
-  ADD KEY `online_ident_idx` (`ident`(25)),
-  ADD KEY `online_logged_idx` (`logged`);
+ALTER TABLE online
+  ADD UNIQUE KEY online_user_id_ident_idx (user_id,ident(25)),
+  ADD KEY online_ident_idx (ident(25)),
+  ADD KEY online_logged_idx (logged);
 
 --
--- Index pour la table `pms_new_block`
+-- Index pour la table pms_new_block
 --
-ALTER TABLE `pms_new_block`
-  ADD KEY `pms_new_block_bl_id_idx` (`bl_id`),
-  ADD KEY `pms_new_block_bl_user_id_idx` (`bl_user_id`);
+ALTER TABLE pms_new_block
+  ADD KEY pms_new_block_bl_id_idx (bl_id),
+  ADD KEY pms_new_block_bl_user_id_idx (bl_user_id);
 
 --
--- Index pour la table `pms_new_posts`
+-- Index pour la table pms_new_posts
 --
-ALTER TABLE `pms_new_posts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pms_new_posts_topic_id_idx` (`topic_id`),
-  ADD KEY `pms_new_posts_multi_idx` (`poster_id`,`topic_id`);
+ALTER TABLE pms_new_posts
+  ADD PRIMARY KEY (id),
+  ADD KEY pms_new_posts_topic_id_idx (topic_id),
+  ADD KEY pms_new_posts_multi_idx (poster_id,topic_id);
 
 --
--- Index pour la table `pms_new_topics`
+-- Index pour la table pms_new_topics
 --
-ALTER TABLE `pms_new_topics`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pms_new_topics_multi_idx_st` (`starter_id`,`topic_st`),
-  ADD KEY `pms_new_topics_multi_idx_to` (`to_id`,`topic_to`);
+ALTER TABLE pms_new_topics
+  ADD PRIMARY KEY (id),
+  ADD KEY pms_new_topics_multi_idx_st (starter_id,topic_st),
+  ADD KEY pms_new_topics_multi_idx_to (to_id,topic_to);
 
 --
--- Index pour la table `poll`
+-- Index pour la table poll
 --
-ALTER TABLE `poll`
-  ADD PRIMARY KEY (`tid`,`question`,`field`);
+ALTER TABLE poll
+  ADD PRIMARY KEY (tid,question,field);
 
 --
--- Index pour la table `poll_voted`
+-- Index pour la table poll_voted
 --
-ALTER TABLE `poll_voted`
-  ADD PRIMARY KEY (`tid`,`uid`);
+ALTER TABLE poll_voted
+  ADD PRIMARY KEY (tid,uid);
 
 --
--- Index pour la table `posts`
+-- Index pour la table posts
 --
-ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `posts_topic_id_idx` (`topic_id`),
-  ADD KEY `posts_multi_idx` (`poster_id`,`topic_id`);
+ALTER TABLE posts
+  ADD PRIMARY KEY (id),
+  ADD KEY posts_topic_id_idx (topic_id),
+  ADD KEY posts_multi_idx (poster_id,topic_id);
 
 --
--- Index pour la table `reports`
+-- Index pour la table reports
 --
-ALTER TABLE `reports`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `reports_zapped_idx` (`zapped`);
+ALTER TABLE reports
+  ADD PRIMARY KEY (id),
+  ADD KEY reports_zapped_idx (zapped);
 
 --
--- Index pour la table `search_cache`
+-- Index pour la table search_cache
 --
-ALTER TABLE `search_cache`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `search_cache_ident_idx` (`ident`(8));
+ALTER TABLE search_cache
+  ADD PRIMARY KEY (id),
+  ADD KEY search_cache_ident_idx (ident(8));
 
 --
--- Index pour la table `search_matches`
+-- Index pour la table search_matches
 --
-ALTER TABLE `search_matches`
-  ADD KEY `search_matches_word_id_idx` (`word_id`),
-  ADD KEY `search_matches_post_id_idx` (`post_id`);
+ALTER TABLE search_matches
+  ADD KEY search_matches_word_id_idx (word_id),
+  ADD KEY search_matches_post_id_idx (post_id);
 
 --
--- Index pour la table `search_words`
+-- Index pour la table search_words
 --
-ALTER TABLE `search_words`
-  ADD PRIMARY KEY (`word`),
-  ADD KEY `search_words_id_idx` (`id`);
+ALTER TABLE search_words
+  ADD PRIMARY KEY (word),
+  ADD KEY search_words_id_idx (id);
 
 --
--- Index pour la table `sec_of_login`
+-- Index pour la table sec_of_login
 --
-ALTER TABLE `sec_of_login`
-  ADD KEY `sec_of_login_form_key_idx` (`form_key`),
-  ADD KEY `sec_of_login_form_time_idx` (`form_time`);
+ALTER TABLE sec_of_login
+  ADD KEY sec_of_login_form_key_idx (form_key),
+  ADD KEY sec_of_login_form_time_idx (form_time);
 
 --
--- Index pour la table `sec_of_register`
+-- Index pour la table sec_of_register
 --
-ALTER TABLE `sec_of_register`
-  ADD KEY `sec_of_register_form_key_idx` (`form_key`),
-  ADD KEY `sec_of_register_form_time_idx` (`form_time`);
+ALTER TABLE sec_of_register
+  ADD KEY sec_of_register_form_key_idx (form_key),
+  ADD KEY sec_of_register_form_time_idx (form_time);
 
 --
--- Index pour la table `smilies`
+-- Index pour la table smilies
 --
-ALTER TABLE `smilies`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE smilies
+  ADD PRIMARY KEY (id);
 
 --
--- Index pour la table `topics`
+-- Index pour la table topics
 --
-ALTER TABLE `topics`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `topics_forum_id_idx` (`forum_id`),
-  ADD KEY `topics_moved_to_idx` (`moved_to`),
-  ADD KEY `topics_last_post_idx` (`last_post`),
-  ADD KEY `topics_first_post_id_idx` (`first_post_id`);
+ALTER TABLE topics
+  ADD PRIMARY KEY (id),
+  ADD KEY topics_forum_id_idx (forum_id),
+  ADD KEY topics_moved_to_idx (moved_to),
+  ADD KEY topics_last_post_idx (last_post),
+  ADD KEY topics_first_post_id_idx (first_post_id);
 
 --
--- Index pour la table `topic_subscriptions`
+-- Index pour la table topic_subscriptions
 --
-ALTER TABLE `topic_subscriptions`
-  ADD PRIMARY KEY (`user_id`,`topic_id`);
+ALTER TABLE topic_subscriptions
+  ADD PRIMARY KEY (user_id,topic_id);
 
 --
--- Index pour la table `users`
+-- Index pour la table users
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_username_idx` (`username`(25)),
-  ADD KEY `users_registered_idx` (`registered`);
+ALTER TABLE users
+  ADD PRIMARY KEY (id),
+  ADD UNIQUE KEY users_username_idx (username(25)),
+  ADD KEY users_registered_idx (registered);
 
 --
 -- Index pour la table `warnings`
 --
 ALTER TABLE `warnings`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (id);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `bans`
+-- AUTO_INCREMENT pour la table bans
 --
-ALTER TABLE `bans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE bans
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `categories`
+-- AUTO_INCREMENT pour la table categories
 --
-ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE categories
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `censoring`
+-- AUTO_INCREMENT pour la table censoring
 --
-ALTER TABLE `censoring`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE censoring
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `forums`
+-- AUTO_INCREMENT pour la table forums
 --
-ALTER TABLE `forums`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE forums
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `groups`
+-- AUTO_INCREMENT pour la table groups
 --
-ALTER TABLE `groups`
-  MODIFY `g_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE groups
+  MODIFY g_id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `pms_new_posts`
+-- AUTO_INCREMENT pour la table pms_new_posts
 --
-ALTER TABLE `pms_new_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE pms_new_posts
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `pms_new_topics`
+-- AUTO_INCREMENT pour la table pms_new_topics
 --
-ALTER TABLE `pms_new_topics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE pms_new_topics
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `posts`
+-- AUTO_INCREMENT pour la table posts
 --
-ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE posts
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `reports`
+-- AUTO_INCREMENT pour la table reports
 --
-ALTER TABLE `reports`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE reports
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `search_words`
+-- AUTO_INCREMENT pour la table search_words
 --
-ALTER TABLE `search_words`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE search_words
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `smilies`
+-- AUTO_INCREMENT pour la table smilies
 --
-ALTER TABLE `smilies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE smilies
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `topics`
+-- AUTO_INCREMENT pour la table topics
 --
-ALTER TABLE `topics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE topics
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT pour la table users
 --
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE users
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `warnings`
 --
 ALTER TABLE `warnings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
